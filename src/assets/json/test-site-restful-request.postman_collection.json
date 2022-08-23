@@ -1,0 +1,439 @@
+{
+	"info": {
+		"_postman_id": "61afaeee-877e-4fc4-9f56-be6aaccbfcd3",
+		"name": "odcm-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/api/public/bbs/post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "ko_KR",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"웹 제목\",\r\n    \"content\": \"웹 내용\",\r\n    \"attachedFile\": {\r\n        \"attachedFileInfos\": [\r\n            { \"filename\": \"20220413103126464-09a035ca-7686-4f93-a1b0-099666f3aa1d.png\", \"originalFilename\": \"K-034.png\", \"fileSize\": 69981, \"contentType\": \"image/png\"},\r\n            { \"filename\": \"20220413102936853-f79c2863-108f-4ec4-80a3-60d374d28f3e.png\", \"originalFilename\": \"K-034.png\", \"fileSize\": 69981, \"contentType\": \"image/png\"}\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://idc.flexink.com:9250/api/public/bbs/post?lang=en",
+					"protocol": "http",
+					"host": [
+						"idc",
+						"flexink",
+						"com"
+					],
+					"port": "9250",
+					"path": [
+						"api",
+						"public",
+						"bbs",
+						"post"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "ko",
+							"disabled": true
+						},
+						{
+							"key": "lang",
+							"value": "en"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/public/bbs/post",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://idc.flexink.com:9250/api/public/bbs/post",
+					"protocol": "http",
+					"host": [
+						"idc",
+						"flexink",
+						"com"
+					],
+					"port": "9250",
+					"path": [
+						"api",
+						"public",
+						"bbs",
+						"post"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "2",
+							"description": "default=1",
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "웹",
+							"description": "optional",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/public/bbs/post/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://idc.flexink.com:9250/api/public/bbs/post/44",
+					"protocol": "http",
+					"host": [
+						"idc",
+						"flexink",
+						"com"
+					],
+					"port": "9250",
+					"path": [
+						"api",
+						"public",
+						"bbs",
+						"post",
+						"44"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/public/bbs/post/{id}",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"웹 제목 수정\",\r\n    \"content\": \"웹 내용 수정\",\r\n    \"attachedFile\": {\r\n        \"attachedFileInfos\": [\r\n            { \"filename\": \"파일 2\", \"originalFilename\": \"파일2.org\", \"fileSize\": 1000, \"contentType\": \"text/json\"},\r\n            { \"filename\": \"파일 3\", \"originalFilename\": \"파일2.org\", \"fileSize\": 1000, \"contentType\": \"text/json\"}\r\n        ]\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://idc.flexink.com:9250/api/public/bbs/post/42",
+					"protocol": "http",
+					"host": [
+						"idc",
+						"flexink",
+						"com"
+					],
+					"port": "9250",
+					"path": [
+						"api",
+						"public",
+						"bbs",
+						"post",
+						"42"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/public/bbs/post/{id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://idc.flexink.com:9250/api/public/bbs/post/42",
+					"protocol": "http",
+					"host": [
+						"idc",
+						"flexink",
+						"com"
+					],
+					"port": "9250",
+					"path": [
+						"api",
+						"public",
+						"bbs",
+						"post",
+						"42"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "2",
+							"description": "default=1",
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "웹",
+							"description": "optional",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/public/bbs/post/file/{id}/{fileId}/(fileInfoId}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://idc.flexink.com:9250/api/public/bbs/post/file/49/40/64",
+					"protocol": "http",
+					"host": [
+						"idc",
+						"flexink",
+						"com"
+					],
+					"port": "9250",
+					"path": [
+						"api",
+						"public",
+						"bbs",
+						"post",
+						"file",
+						"49",
+						"40",
+						"64"
+					],
+					"query": [
+						{
+							"key": "pageNumber",
+							"value": "2",
+							"description": "default=1",
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "웹",
+							"description": "optional",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/public/bbs/post/file",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Downloads/K-034.png"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Downloads/K-034.png"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Downloads/K-034.png",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Downloads/K-034.png",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Downloads/K-034.png",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Downloads/K-034.png",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Downloads/K-034.png",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Downloads/K-034.png",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Downloads/K-034.png",
+							"disabled": true
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Downloads/20220411/2015_korki_tot.pdf",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://idc.flexink.com:9250/api/public/bbs/post/file",
+					"protocol": "http",
+					"host": [
+						"idc",
+						"flexink",
+						"com"
+					],
+					"port": "9250",
+					"path": [
+						"api",
+						"public",
+						"bbs",
+						"post",
+						"file"
+					],
+					"query": [
+						{
+							"key": "file",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/public/bbs/post/file/{filename}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/D:/Downloads/K-034.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://idc.flexink.com:9250/api/public/bbs/post/file/20220413103126464-09a035ca-7686-4f93-a1b0-099666f3aa1d.png?lang=ko",
+					"protocol": "http",
+					"host": [
+						"idc",
+						"flexink",
+						"com"
+					],
+					"port": "9250",
+					"path": [
+						"api",
+						"public",
+						"bbs",
+						"post",
+						"file",
+						"20220413103126464-09a035ca-7686-4f93-a1b0-099666f3aa1d.png"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "ko"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/public/bbs/post/file/{id}/{fileId}/(fileInfoId}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "ko-KR",
+						"type": "default",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://idc.flexink.com:9250/api/public/bbs/post/file/54/45/74?lang=en",
+					"protocol": "http",
+					"host": [
+						"idc",
+						"flexink",
+						"com"
+					],
+					"port": "9250",
+					"path": [
+						"api",
+						"public",
+						"bbs",
+						"post",
+						"file",
+						"54",
+						"45",
+						"74"
+					],
+					"query": [
+						{
+							"key": "lang",
+							"value": "en"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/public/menu/hierarchy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://idc.flexink.com:9250/api/public/menu/hierarchy",
+					"protocol": "http",
+					"host": [
+						"idc",
+						"flexink",
+						"com"
+					],
+					"port": "9250",
+					"path": [
+						"api",
+						"public",
+						"menu",
+						"hierarchy"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
