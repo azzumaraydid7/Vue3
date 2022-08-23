@@ -192,7 +192,7 @@
 			"response": []
 		},
 		{
-			"name": "/api/public/bbs/post/file/{id}/{fileId}/(fileInfoId}",
+			"name": "/api/public/bbs/post/file/{id}/{fileId}/{fileInfoId}",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -371,7 +371,7 @@
 			"response": []
 		},
 		{
-			"name": "/api/public/bbs/post/file/{id}/{fileId}/(fileInfoId}",
+			"name": "/api/public/bbs/post/file/{id}/{fileId}/{fileInfoId}",
 			"request": {
 				"method": "GET",
 				"header": [
