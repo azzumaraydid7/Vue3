@@ -105,29 +105,33 @@ export default {
 
             const header = { 'content-type': 'multipart/form-data' }
 
-            axios.post('http://public.flexink.com:9250/api/public/bbs/post/file', formData, { headers: header }
-            ).then(response => {
-                submitName.value = 'File Uploaded'
-                success.value = true
-                label.value = response.data
+            if(image.value) {
+                axios.post('http://public.flexink.com:9250/api/public/bbs/post/file', formData, { headers: header }
+                ).then(response => {
+                    submitName.value = 'File Uploaded'
+                    success.value = true
+                    label.value = response.data
 
-                label.value.forEach(element => {
-                    filePost.value.push({
-                        "filename" : element.originalFilename
-                    })
-                });
+                    label.value.forEach(element => {
+                        filePost.value.push({
+                            "filename" : element.originalFilename
+                        })
+                    });
 
-                this.submit(label.value)
-            })
-            .catch(function(){
-                failed.value = true
-            })
-            .finally(() => {
-                setTimeout(function() {
-                    success.value = false
-                    failed.value = false
-                }, 3000)
-            })
+                    this.submit(label.value)
+                })
+                .catch(function(){
+                    failed.value = true
+                })
+                .finally(() => {
+                    setTimeout(function() {
+                        success.value = false
+                        failed.value = false
+                    }, 3000)
+                })
+            } else {
+                this.submit()
+            }
         }
 
         function submit(value) {
