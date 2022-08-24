@@ -37,7 +37,7 @@
                 <router-link :to="{ name: 'bbs-list'}" class="border border-black hover:bg-black hover:text-white transition-colors rounded px-4 py-1">
                     List
                 </router-link>
-                <router-link :to="'/bbs/modify/' + view.id" class="border border-black hover:bg-black hover:text-white transition-colors rounded px-4 py-1">
+                <router-link :to="'/bbs/modify/' + view.id" class="border border-blue-800 bg-blue-500 hover:bg-blue-600 text-white transition-colors rounded px-4 py-1">
                     Modify
                 </router-link>
             </div>
