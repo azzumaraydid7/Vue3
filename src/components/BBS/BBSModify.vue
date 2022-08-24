@@ -36,7 +36,7 @@
                         </div>
                     </div>
                     <div class="pt-2">
-                        <input required type="file" ref="file" name="upload" id="upload" @change="onFileChange" class="border cursor-pointer">
+                        <input type="file" ref="file" name="upload" id="upload" @change="onFileChange" class="border cursor-pointer">
                     </div>
                     <div id="preview" class="pt-4">
                         <img v-if="fileURL" :src="fileURL" class="object-cover h-40 w-40"/>
