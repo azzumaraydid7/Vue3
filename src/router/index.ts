@@ -1,14 +1,14 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import BBS from '../components/BBS/BBS.vue'
-import BBSRegister from '../components/BBS/BBSRegister.vue'
-import BBSList from '../components/BBS/BBSList.vue'
-import BBSView from '../components/BBS/BBSView.vue'
-import BBSModify from '../components/BBS/BBSModify.vue'
+import BBS from '../views/bbs/BBS.vue'
+import BBSRegister from '../views/bbs/BBSRegister.vue'
+import BBSList from '../views/bbs/BBSList.vue'
+import BBSView from '../views/bbs/BBSView.vue'
+import BBSModify from '../views/bbs/BBSModify.vue'
 
-import Member from '../components/Members/MemberView.vue'
-import MemberRegister from '../components/Members/MemberRegister.vue'
-import MemberList from '../components/Members/MemberList.vue'
+import Member from '../views/member/MemberView.vue'
+import MemberRegister from '../views/member/MemberRegister.vue'
+import MemberList from '../views/member/MemberList.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

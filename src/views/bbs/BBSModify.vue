@@ -3,8 +3,8 @@
         <h2>
             BBS Modify
         </h2>
-        <form @submit.prevent="uploadFile()" :id="'post_' + postId">
-            <div class="border grid grid-cols-4 gap-4 p-4 my-4">
+        <form @submit.prevent="uploadFile()">
+            <div class="border grid grid-cols-4 gap-4 p-4 my-4" :id="'post_' + postId">
                 <div>
                     title
                 </div>
@@ -70,11 +70,12 @@
 <script>
 import axios from 'axios'
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 export default {
     setup() {
         const route = useRoute()
+        const router = useRouter()
         const postId = ref(route.params.id)
         const success = ref(false)
         const failed = ref(false)
@@ -146,6 +147,9 @@ export default {
             .then(response => {
                 submitName.value = 'Saved'
                 success.value = true
+                setTimeout(function() {
+                    router.push('/bbs/list')
+                }, 1500)
             })
             .catch(error => {
                 message.value = error.response.data.message
@@ -177,6 +181,9 @@ export default {
                 success.value = true
                 const post_id = document.getElementById("post_" + postId.value)
                 post_id.style.display = "none"
+                setTimeout(function() {
+                    router.push('/bbs/list')
+                }, 1500)
             })
             .catch(error => {
                 message.value = error.response.data.message
