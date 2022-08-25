@@ -23,7 +23,7 @@
                 <div v-if="view.attachedFile">
                     <div v-for="file in view" :key="file.id">
                         <div v-for="fileInfo in file.attachedFileInfos" :key="fileInfo.id">
-                            <span @click="download(view.id, file.id, fileInfo.id)" class="hover:underline cursor-pointer">
+                            <span @click="download(view.id, file.id, fileInfo.id, fileInfo.filename)" class="hover:underline cursor-pointer">
                                 {{ fileInfo.filename }}
                             </span>
                         </div>
@@ -71,11 +71,17 @@ export default {
             })
         })
 
-        function download(id, file_id, fileInfo_id) {
+        function download(id, file_id, fileInfo_id, filename) {
             axios
             .get(`http://public.flexink.com:9250/api/public/bbs/post/file/${id}/${file_id}/${fileInfo_id}?lang=en`)
             .then(response => {
-                message.value = response.data
+                // const url = window.URL.createObjectURL(new Blob([response.data]));
+                const url = `http://public.flexink.com:9250/api/public/bbs/post/file/${id}/${file_id}/${fileInfo_id}?lang=en`;
+                const link = document.createElement('a')
+                link.href = url;
+                link.setAttribute('download', filename)
+                document.body.appendChild(link);
+                link.click();
             })
             .catch(error => {
                 failed.value = true
