@@ -23,7 +23,9 @@
                 <div v-if="view.attachedFile">
                     <div v-for="file in view" :key="file.id">
                         <div v-for="fileInfo in file.attachedFileInfos" :key="fileInfo.id">
-                            {{ fileInfo.filename }}
+                            <span @click="download(view.id, file.id, fileInfo.id)" class="hover:underline cursor-pointer">
+                                {{ fileInfo.filename }}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -32,8 +34,13 @@
                 </div>
             </div>
         </div>
-        <div>
-            <div class="float-right space-x-2">
+        <div class="flex justify-between">
+            <div>
+                <div v-if="failed" class="px-4 py-1 rounded border border-red-600 bg-red-200 text-red-700 shadow">
+                    Fail to download - {{ message }}
+                </div>
+            </div>
+            <div class="space-x-2">
                 <router-link :to="{ name: 'bbs-list'}" class="border border-black hover:bg-black hover:text-white transition-colors rounded px-4 py-1">
                     List
                 </router-link>
@@ -53,6 +60,8 @@ export default {
     setup() {
         const view = ref([])
         const route = useRoute()
+        const failed = ref(false)
+        const message = ref('')
 
         onMounted(async () => {
             await axios
@@ -61,8 +70,29 @@ export default {
                 view.value = response.data
             })
         })
+
+        function download(id, file_id, fileInfo_id) {
+            axios
+            .get(`http://public.flexink.com:9250/api/public/bbs/post/file/${id}/${file_id}/${fileInfo_id}?lang=en`)
+            .then(response => {
+                message.value = response.data
+            })
+            .catch(error => {
+                failed.value = true
+                message.value = error.response.data.message
+            })
+            .finally(() => {
+                setTimeout(function() {
+                    failed.value = false
+                }, 3000)
+            })
+        }
+
         return {
-            view
+            view,
+            failed,
+            message,
+            download
         }
     }
 }

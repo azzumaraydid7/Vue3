@@ -62,9 +62,11 @@
 <script>
 import axios from 'axios'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 export default {
     setup() {
+        const router = useRouter()
         const success = ref(false)
         const failed = ref(false)
         const view = ref({
@@ -122,6 +124,10 @@ export default {
             .then(response => {
                 submitName.value = 'Saved'
                 success.value = true
+
+                setTimeout(function() {
+                    router.push('/bbs/list')
+                }, 1500)
             })
             .catch(error => {
                 message.value = error.response.data

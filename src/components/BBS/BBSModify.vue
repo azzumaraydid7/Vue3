@@ -49,7 +49,7 @@
                         {{ submitName }}
                     </div>
                     <div v-if="failed" class="px-4 py-1 rounded border border-red-600 bg-red-200 text-red-700 shadow">
-                        Failed
+                        {{ message }}
                     </div>
                 </div>
                 <div class="space-x-2">
@@ -88,7 +88,7 @@ export default {
             content: ''
         })
         const filePost = ref([])
-        const message = ref('')
+        const message = ref('Failed')
 
         onMounted(async () => {
             await axios
@@ -148,7 +148,7 @@ export default {
                 success.value = true
             })
             .catch(error => {
-                message.value = error.response.data
+                message.value = error.response.data.message
                 failed.value = true
             })
             .finally(() => {
@@ -179,6 +179,7 @@ export default {
                 post_id.style.display = "none"
             })
             .catch(error => {
+                message.value = error.response.data.message
                 failed.value = true
             })
             .finally(() => {
@@ -206,12 +207,40 @@ export default {
 
                 const file_info_id = document.getElementById("file_info_" + fileInfo_id)
                 file_info_id.style.display = "none"
+
+                process.value = false
+                setTimeout(function() {
+                    success.value = false
+                }, 3000)
             })
             .catch(error => {
+                label.value.forEach(element => {
+                    this.deleteFileAfterUpload(element.originalFilename)
+                    console.log(element.originalFilename)
+                });
+            })
+        }
+
+        function deleteFileAfterUpload(filename) {
+            axios
+            .delete(`http://public.flexink.com:9250/api/public/bbs/post/file/${filename}`)
+            .then(response => {
+                submitName.value = 'File deleted'
+                success.value = true
+                fileURL.value = null
+
+                const files = filePost.value
+                const fileIndex = files.indexOf(filename)
+                filePost.value = files.splice(fileIndex)
+
+                // const file_info_id = document.getElementById("file_info_" + filename)
+                // file_info_id.style.display = "none"
+            })
+            .catch(error => {
+                message.value = error.response.data.message
                 failed.value = true
             })
             .finally(() => {
-                process.value = false
                 setTimeout(function() {
                     success.value = false
                     failed.value = false
@@ -234,6 +263,7 @@ export default {
             onFileChange,
             deletePost,
             deleteFile,
+            deleteFileAfterUpload,
             filePost,
             message
         }

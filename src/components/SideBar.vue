@@ -48,6 +48,9 @@ export default {
             .then(response => {
                 links.value = response.data
             })
+            .catch(error => {
+                console.log(error.response.message)
+            })
         })
         return {
             links
