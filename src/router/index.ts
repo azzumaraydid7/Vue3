@@ -10,6 +10,8 @@ import Member from '../views/member/MemberView.vue'
 import MemberRegister from '../views/member/MemberRegister.vue'
 import MemberList from '../views/member/MemberList.vue'
 
+import TestTest from '../views/test/TestView.vue'
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -62,6 +64,11 @@ const router = createRouter({
         }
       ]
     },
+    {
+      path: '/test',
+      name: 'test',
+      component: TestTest
+    }
   ]
 })
 
