@@ -28,6 +28,33 @@
                 </transition>
             </div>
         </div>
+        <div>
+            <button class="font-bold py-2 w-full border rounded flex items-center justify-center"
+                @click="activeId = index">
+                Test
+            </button>
+            <div class="overflow-hidden">
+                <transition
+                    enter-active-class="-translate-y-1/2 opacity-0 transform transition duration-500 ease-in-out"
+                    enter-class="-translate-y-1/2 opacity-0"
+                    enter-to-class="translate-y-0 opacity-100"
+                    leave-active-class="transform transition duration-300 ease-in-out"
+                    leave-class="translate-y-0 opacity-100"
+                    leave-to-class="-translate-y-1/2 opacity-0"
+                >
+                    <ul
+                    v-show="true"
+                    class="space-y-1"
+                    >
+                        <li>
+                            <router-link :to="'/test'" class="bg-black text-white border border-black block px-4 py-2 rounded hover:bg-slate-900 active:bg-gray-500 active:text-white transition-colors shadow">
+                                test
+                            </router-link>
+                        </li>
+                    </ul>
+                </transition>
+            </div>
+        </div>
     </div>
 </template>
 <script>
